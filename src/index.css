@@ -1,0 +1,2831 @@
+@import url('https://fonts.googleapis.com/css2?family=Iceland&display=swap');
+
+@import "tailwindcss";
+
+
+* {
+  font-family: "Iceland", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer utilities {
+  .clip-path-custom {
+    clip-path: polygon(0 0, 100% 0, 100% 98%, 75% 95%, 0 100%);
+  }
+
+  .clip-path-custom-2 {
+    clip-path: polygon(0 0, 100% 0, 100% 98%, 25% 95%, 0 100%);
+  }
+
+  .clip-path-custom-3 {
+    clip-path: polygon(0 0, 100% 0, 100% 98%, 75% 96%, 0 100%);
+  }
+}
+
+@keyframes slide-down {
+  from {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-down {
+  animation: slide-down 1s ease-out forwards;
+}
+
+
+
+
+
+/* Add this to your global CSS or in Projects.jsx */
+.overflow-y-auto {
+  overflow-y: scroll !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+/* Force scrollbar to work */
+* {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Remove any conflicting styles */
+.pointer-events-none {
+  pointer-events: auto !important;
+}
+
+/* Ensure height is correct */
+.h-\[85vh\] {
+  height: 85vh !important;
+  max-height: 85vh !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ============================================= */
+/* IRON MAN JARVIS VIRTUAL GLASSY SCREEN - FIXED */
+/* ============================================= */
+
+/* 1. OVERLAY - NO SLOW ANIMATION */
+.ironman-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 9999;
+  overflow: hidden;
+  animation: none !important;
+  /* REMOVED SLOW ANIMATION */
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* 2. MAIN CONTAINER - NO OPENING ANIMATION */
+.ironman-modal-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  height: 85vh;
+  background: linear-gradient(145deg,
+      rgba(0, 15, 40, 0.92) 0%,
+      rgba(0, 40, 80, 0.88) 30%,
+      rgba(0, 60, 120, 0.85) 60%,
+      rgba(0, 30, 60, 0.92) 100%);
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(0, 180, 255, 0.4),
+    0 0 60px rgba(0, 150, 255, 0.3),
+    0 0 120px rgba(0, 100, 255, 0.2),
+    inset 0 0 80px rgba(0, 200, 255, 0.15),
+    inset 0 0 20px rgba(0, 220, 255, 0.1);
+  animation: containerGlow 3s ease-in-out infinite alternate;
+  transform-origin: center;
+  opacity: 1 !important;
+  transform: none !important;
+  animation-delay: 0s !important;
+}
+
+/* 3. ANIMATED BORDER GLOW - MULTI-LAYER */
+.ironman-border-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  padding: 2px;
+  background: linear-gradient(45deg,
+      transparent 0%,
+      rgba(0, 220, 255, 0.9) 25%,
+      rgba(0, 180, 255, 0.9) 50%,
+      rgba(0, 140, 255, 0.9) 75%,
+      transparent 100%);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: borderFlow 6s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* 4. INNER GLOW LAYER */
+.ironman-border-glow::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border-radius: 22px;
+  background: linear-gradient(135deg,
+      rgba(0, 200, 255, 0.15) 0%,
+      rgba(0, 150, 255, 0.1) 50%,
+      rgba(0, 200, 255, 0.15) 100%);
+  filter: blur(2px);
+  animation: innerPulse 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* 5. HEADER WITH HOLOGRAPHIC EFFECT */
+.ironman-modal-header {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid rgba(0, 200, 255, 0.4);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to bottom,
+      rgba(0, 30, 60, 0.7) 0%,
+      rgba(0, 40, 80, 0.5) 100%);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 3;
+  box-shadow:
+    0 5px 20px rgba(0, 100, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.ironman-title {
+  color: transparent;
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: 1.5px;
+  background: linear-gradient(90deg,
+      #ffffff 0%,
+      #a0e7ff 30%,
+      #80dfff 60%,
+      #ffffff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow:
+    0 0 20px rgba(0, 200, 255, 0.7),
+    0 0 40px rgba(0, 150, 255, 0.5),
+    0 0 60px rgba(0, 100, 255, 0.3);
+  animation: titleGlow 3s ease-in-out infinite alternate;
+  position: relative;
+}
+
+.ironman-title::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(0, 200, 255, 0.8), transparent);
+  animation: titleUnderline 4s ease-in-out infinite;
+}
+
+.ironman-close-btn {
+  color: #fff;
+  font-size: 1.8rem;
+  background: rgba(0, 100, 255, 0.2);
+  border: 1px solid rgba(0, 200, 255, 0.6);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.ironman-close-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+      rgba(0, 200, 255, 0.3) 0%,
+      rgba(0, 150, 255, 0.2) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.ironman-close-btn:hover {
+  background: rgba(0, 150, 255, 0.4);
+  border-color: rgba(0, 220, 255, 0.9);
+  box-shadow:
+    0 0 20px rgba(0, 200, 255, 0.6),
+    0 0 40px rgba(0, 180, 255, 0.3);
+  transform: scale(1.15) rotate(90deg);
+}
+
+.ironman-close-btn:hover::before {
+  opacity: 1;
+}
+
+/* 6. SCROLLABLE CONTENT - FIXED SMOOTH SCROLLING */
+.ironman-scroll-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0;
+  position: relative;
+  z-index: 2;
+  /* REMOVE scroll-behavior: smooth as it causes stuttering */
+  scroll-behavior: auto !important;
+  will-change: transform;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  perspective: 1000;
+}
+
+.ironman-content-inner {
+  padding: 2.5rem;
+  position: relative;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+/* ENHANCED BLUE-ISH SCROLLBAR - OPTIMIZED */
+.ironman-scroll-content::-webkit-scrollbar {
+  width: 14px;
+}
+
+.ironman-scroll-content::-webkit-scrollbar-track {
+  background: linear-gradient(to bottom,
+      rgba(0, 30, 60, 0.2) 0%,
+      rgba(0, 50, 100, 0.3) 50%,
+      rgba(0, 30, 60, 0.2) 100%);
+  border-radius: 10px;
+  margin: 6px;
+  border: 1px solid rgba(0, 180, 255, 0.2);
+  box-shadow:
+    inset 0 0 10px rgba(0, 100, 255, 0.2),
+    0 0 10px rgba(0, 100, 255, 0.1);
+}
+
+.ironman-scroll-content::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg,
+      rgba(0, 220, 255, 0.95) 0%,
+      rgba(0, 180, 255, 0.9) 30%,
+      rgba(0, 140, 255, 0.85) 70%,
+      rgba(0, 100, 255, 0.9) 100%);
+  border-radius: 10px;
+  border: 2px solid rgba(0, 220, 255, 0.3);
+  box-shadow:
+    0 0 15px rgba(0, 200, 255, 0.6),
+    0 0 30px rgba(0, 180, 255, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.ironman-scroll-content::-webkit-scrollbar-thumb::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(to bottom,
+      rgba(255, 255, 255, 0.3) 0%,
+      transparent 100%);
+  border-radius: 10px 10px 0 0;
+}
+
+.ironman-scroll-content::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg,
+      rgba(0, 240, 255, 1) 0%,
+      rgba(0, 200, 255, 0.95) 30%,
+      rgba(0, 160, 255, 0.9) 70%,
+      rgba(0, 120, 255, 0.95) 100%);
+  box-shadow:
+    0 0 20px rgba(0, 220, 255, 0.8),
+    0 0 40px rgba(0, 200, 255, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.ironman-scroll-content::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(180deg,
+      rgba(0, 255, 255, 1) 0%,
+      rgba(0, 220, 255, 1) 30%,
+      rgba(0, 180, 255, 1) 70%,
+      rgba(0, 140, 255, 1) 100%);
+}
+
+/* Firefox scrollbar */
+.ironman-scroll-content {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 180, 255, 0.9) rgba(0, 30, 60, 0.3);
+}
+
+/* 7. IMAGE CONTAINER WITH HOLOGRAPHIC FRAME */
+.ironman-image-container {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.ironman-image-frame {
+  display: inline-block;
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 2px rgba(0, 200, 255, 0.5),
+    0 0 60px rgba(0, 150, 255, 0.6),
+    0 0 120px rgba(0, 100, 255, 0.4),
+    inset 0 0 40px rgba(0, 220, 255, 0.3);
+  animation: frameGlow 4s ease-in-out infinite alternate;
+  transform: perspective(1000px) rotateX(2deg);
+}
+
+.ironman-image {
+  width: 100%;
+  max-width: 850px;
+  height: 320px;
+  object-fit: cover;
+  display: block;
+  filter: saturate(1.1) contrast(1.05);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform;
+}
+
+.ironman-image:hover {
+  transform: scale(1.02) translateZ(0);
+}
+
+.ironman-image-glow {
+  position: absolute;
+  inset: 0;
+  border: 3px solid rgba(0, 220, 255, 0.7);
+  border-radius: 18px;
+  animation: imagePulse 3s ease-in-out infinite;
+  pointer-events: none;
+  filter: blur(1px);
+}
+
+/* 8. SECTIONS WITH DATA STREAM EFFECT */
+.ironman-section {
+  margin-bottom: 3rem;
+  position: relative;
+  transform: translateZ(0);
+}
+
+.ironman-section::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(to bottom,
+      transparent 0%,
+      rgba(0, 200, 255, 0.8) 30%,
+      rgba(0, 180, 255, 0.8) 70%,
+      transparent 100%);
+  border-radius: 2px;
+  animation: dataStream 6s linear infinite;
+  opacity: 0.7;
+}
+
+.ironman-section-title {
+  color: transparent;
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(90deg, #ffffff, #80dfff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow:
+    0 0 15px rgba(0, 200, 255, 0.6),
+    0 0 30px rgba(0, 150, 255, 0.4);
+  letter-spacing: 1px;
+  position: relative;
+  padding-left: 1.5rem;
+  display: inline-block;
+}
+
+.ironman-section-title::before {
+  content: '▶';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(0, 220, 255, 0.9);
+  font-size: 1.2rem;
+  text-shadow: 0 0 10px rgba(0, 220, 255, 0.8);
+  animation: blink 2s infinite;
+}
+
+/* 9. TAGS - HOLOGRAPHIC CHIPS */
+.ironman-tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+  transform: translateZ(0);
+}
+
+.ironman-tag {
+  color: #fff;
+  background: linear-gradient(135deg,
+      rgba(0, 150, 255, 0.25) 0%,
+      rgba(0, 100, 255, 0.2) 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 0.7rem 1.4rem;
+  border-radius: 25px;
+  border: 1px solid rgba(0, 200, 255, 0.5);
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 4px 15px rgba(0, 100, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transform: translateZ(0);
+}
+
+.ironman-tag::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent);
+  transition: left 0.6s ease;
+}
+
+.ironman-tag:hover {
+  background: linear-gradient(135deg,
+      rgba(0, 180, 255, 0.35) 0%,
+      rgba(0, 140, 255, 0.3) 100%);
+  border-color: rgba(0, 220, 255, 0.8);
+  transform: translateY(-3px) scale(1.05) translateZ(0);
+  box-shadow:
+    0 8px 25px rgba(0, 150, 255, 0.4),
+    0 0 40px rgba(0, 180, 255, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.ironman-tag:hover::before {
+  left: 100%;
+}
+
+/* 10. DESCRIPTION PANEL - GLASS TERMINAL */
+.ironman-description-panel {
+  background: linear-gradient(135deg,
+      rgba(0, 25, 50, 0.6) 0%,
+      rgba(0, 40, 80, 0.5) 100%);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(0, 200, 255, 0.4);
+  border-radius: 18px;
+  padding: 2rem;
+  box-shadow:
+    inset 0 0 30px rgba(0, 200, 255, 0.15),
+    0 0 50px rgba(0, 150, 255, 0.25),
+    0 10px 30px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  transform: translateZ(0);
+}
+
+.ironman-description-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 220, 255, 0.8), transparent);
+  animation: panelScan 5s linear infinite;
+}
+
+.ironman-description-text {
+  color: #fff;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin: 0;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  font-family: 'Courier New', monospace;
+  position: relative;
+  z-index: 1;
+}
+
+/* 11. BUTTONS - JARVIS INTERFACE */
+.ironman-buttons-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  padding: 3rem 0 2rem;
+  position: relative;
+  transform: translateZ(0);
+}
+
+.ironman-btn {
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  min-width: 170px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transform-style: preserve-3d;
+  perspective: 500px;
+  transform: translateZ(0);
+}
+
+.ironman-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent);
+  transition: left 0.8s ease;
+  z-index: -1;
+}
+
+.ironman-btn:hover::before {
+  left: 100%;
+}
+
+.ironman-btn-primary {
+  background: linear-gradient(135deg,
+      rgba(0, 200, 255, 0.95) 0%,
+      rgba(0, 140, 255, 0.9) 100%);
+  color: #fff;
+  box-shadow:
+    0 10px 30px rgba(0, 150, 255, 0.5),
+    0 0 50px rgba(0, 180, 255, 0.4),
+    0 0 0 2px rgba(0, 220, 255, 0.6);
+  text-shadow: 0 0 10px rgba(0, 200, 255, 0.8);
+}
+
+.ironman-btn-primary:hover {
+  background: linear-gradient(135deg,
+      rgba(0, 220, 255, 1) 0%,
+      rgba(0, 160, 255, 1) 100%);
+  transform: translateY(-4px) scale(1.05) translateZ(0);
+  box-shadow:
+    0 15px 40px rgba(0, 180, 255, 0.7),
+    0 0 70px rgba(0, 200, 255, 0.6),
+    0 0 0 3px rgba(0, 240, 255, 0.8);
+}
+
+.ironman-btn-secondary {
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.15) 0%,
+      rgba(200, 230, 255, 0.1) 100%);
+  color: #fff;
+  border: 2px solid rgba(0, 200, 255, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow:
+    0 8px 25px rgba(0, 100, 255, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.ironman-btn-secondary:hover {
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.25) 0%,
+      rgba(220, 240, 255, 0.2) 100%);
+  border-color: rgba(0, 220, 255, 0.9);
+  transform: translateY(-4px) scale(1.05) translateZ(0);
+  box-shadow:
+    0 12px 35px rgba(0, 150, 255, 0.4),
+    0 0 50px rgba(0, 180, 255, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* 12. FOOTER GLOW */
+.ironman-footer-glow {
+  height: 6px;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(0, 220, 255, 0.9) 25%,
+      rgba(0, 180, 255, 0.9) 50%,
+      rgba(0, 220, 255, 0.9) 75%,
+      transparent 100%);
+  flex-shrink: 0;
+  animation: footerFlow 4s linear infinite;
+  filter: blur(1px);
+}
+
+/* 13. ENHANCED PARTICLES - MORE AND SMALLER */
+.ironman-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ironman-particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: rgba(0, 220, 255, 0.9);
+  border-radius: 50%;
+  box-shadow:
+    0 0 8px rgba(0, 220, 255, 0.9),
+    0 0 16px rgba(0, 200, 255, 0.7);
+  animation: particleFloat linear infinite;
+  filter: blur(0.5px);
+  transform: translateZ(0);
+}
+
+/* Create more particles */
+.ironman-particle:nth-child(1) {
+  left: 10%;
+  top: 20%;
+  animation-delay: 0s;
+  animation-duration: 15s;
+}
+
+.ironman-particle:nth-child(2) {
+  left: 30%;
+  top: 60%;
+  animation-delay: 1s;
+  animation-duration: 18s;
+}
+
+.ironman-particle:nth-child(3) {
+  left: 70%;
+  top: 30%;
+  animation-delay: 2s;
+  animation-duration: 12s;
+}
+
+.ironman-particle:nth-child(4) {
+  left: 20%;
+  top: 80%;
+  animation-delay: 3s;
+  animation-duration: 20s;
+}
+
+.ironman-particle:nth-child(5) {
+  left: 80%;
+  top: 70%;
+  animation-delay: 4s;
+  animation-duration: 16s;
+}
+
+.ironman-particle:nth-child(6) {
+  left: 40%;
+  top: 10%;
+  animation-delay: 5s;
+  animation-duration: 14s;
+}
+
+.ironman-particle:nth-child(7) {
+  left: 60%;
+  top: 90%;
+  animation-delay: 6s;
+  animation-duration: 19s;
+}
+
+.ironman-particle:nth-child(8) {
+  left: 90%;
+  top: 40%;
+  animation-delay: 7s;
+  animation-duration: 17s;
+}
+
+.ironman-particle:nth-child(9) {
+  left: 15%;
+  top: 50%;
+  animation-delay: 8s;
+  animation-duration: 13s;
+}
+
+.ironman-particle:nth-child(10) {
+  left: 50%;
+  top: 85%;
+  animation-delay: 9s;
+  animation-duration: 21s;
+}
+
+.ironman-particle:nth-child(11) {
+  left: 85%;
+  top: 15%;
+  animation-delay: 10s;
+  animation-duration: 15s;
+}
+
+.ironman-particle:nth-child(12) {
+  left: 25%;
+  top: 25%;
+  animation-delay: 11s;
+  animation-duration: 18s;
+}
+
+.ironman-particle:nth-child(13) {
+  left: 75%;
+  top: 55%;
+  animation-delay: 12s;
+  animation-duration: 16s;
+}
+
+.ironman-particle:nth-child(14) {
+  left: 35%;
+  top: 75%;
+  animation-delay: 13s;
+  animation-duration: 14s;
+}
+
+.ironman-particle:nth-child(15) {
+  left: 65%;
+  top: 25%;
+  animation-delay: 14s;
+  animation-duration: 20s;
+}
+
+.ironman-particle:nth-child(16) {
+  left: 45%;
+  top: 45%;
+  animation-delay: 15s;
+  animation-duration: 17s;
+}
+
+.ironman-particle:nth-child(17) {
+  left: 55%;
+  top: 65%;
+  animation-delay: 16s;
+  animation-duration: 19s;
+}
+
+.ironman-particle:nth-child(18) {
+  left: 95%;
+  top: 85%;
+  animation-delay: 17s;
+  animation-duration: 13s;
+}
+
+.ironman-particle:nth-child(19) {
+  left: 5%;
+  top: 95%;
+  animation-delay: 18s;
+  animation-duration: 22s;
+}
+
+.ironman-particle:nth-child(20) {
+  left: 95%;
+  top: 5%;
+  animation-delay: 19s;
+  animation-duration: 16s;
+}
+
+/* 14. SCAN LINES */
+.ironman-scanline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(0, 240, 255, 0.9) 30%,
+      rgba(0, 200, 255, 0.9) 70%,
+      transparent 100%);
+  animation: jarvisScan 6s linear infinite;
+  pointer-events: none;
+  z-index: 4;
+  filter: blur(1px);
+  box-shadow: 0 0 20px rgba(0, 220, 255, 0.7);
+}
+
+/* 15. DATA GRID BACKGROUND */
+.ironman-modal-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 100, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 100, 255, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+  animation: gridMove 20s linear infinite;
+}
+
+/* 16. CORNER GLOWS */
+.ironman-modal-container::after {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(0, 220, 255, 0.4) 0%, transparent 70%);
+  filter: blur(20px);
+  animation: cornerGlow 8s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ironman-modal-container::after {
+  top: -50px;
+  left: -50px;
+}
+
+/* Additional corner glow */
+.ironman-modal-container .corner-glow {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(0, 180, 255, 0.3) 0%, transparent 70%);
+  filter: blur(25px);
+  animation: cornerGlow2 10s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+  bottom: -50px;
+  right: -50px;
+}
+
+/* ============================================= */
+/* FIXED ANIMATIONS - REMOVED SLOW OPENING */
+/* ============================================= */
+
+/* REMOVED COMPLETELY: jarvisReveal animation */
+/* @keyframes jarvisReveal {
+  0% {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+    transform: scale(0.8) translateY(50px);
+  }
+  30% {
+    opacity: 0.5;
+    backdrop-filter: blur(4px);
+    transform: scale(0.9) translateY(20px);
+  }
+  70% {
+    opacity: 0.8;
+    backdrop-filter: blur(6px);
+    transform: scale(0.95) translateY(5px);
+  }
+  100% {
+    opacity: 1;
+    backdrop-filter: blur(8px);
+    transform: scale(1) translateY(0);
+  }
+} */
+
+@keyframes containerGlow {
+
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 1px rgba(0, 180, 255, 0.4),
+      0 0 60px rgba(0, 150, 255, 0.3),
+      0 0 120px rgba(0, 100, 255, 0.2),
+      inset 0 0 80px rgba(0, 200, 255, 0.15),
+      inset 0 0 20px rgba(0, 220, 255, 0.1);
+  }
+
+  50% {
+    box-shadow:
+      0 0 0 1px rgba(0, 200, 255, 0.5),
+      0 0 80px rgba(0, 180, 255, 0.4),
+      0 0 140px rgba(0, 140, 255, 0.3),
+      inset 0 0 90px rgba(0, 220, 255, 0.2),
+      inset 0 0 25px rgba(0, 240, 255, 0.15);
+  }
+}
+
+@keyframes borderFlow {
+  0% {
+    background-position: -200% 50%;
+  }
+
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+@keyframes innerPulse {
+
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes titleGlow {
+  0% {
+    text-shadow:
+      0 0 20px rgba(0, 200, 255, 0.7),
+      0 0 40px rgba(0, 150, 255, 0.5),
+      0 0 60px rgba(0, 100, 255, 0.3);
+  }
+
+  100% {
+    text-shadow:
+      0 0 25px rgba(0, 220, 255, 0.8),
+      0 0 50px rgba(0, 180, 255, 0.6),
+      0 0 75px rgba(0, 140, 255, 0.4);
+  }
+}
+
+@keyframes titleUnderline {
+
+  0%,
+  100% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes frameGlow {
+  0% {
+    box-shadow:
+      0 0 0 2px rgba(0, 200, 255, 0.5),
+      0 0 60px rgba(0, 150, 255, 0.6),
+      0 0 120px rgba(0, 100, 255, 0.4),
+      inset 0 0 40px rgba(0, 220, 255, 0.3);
+  }
+
+  100% {
+    box-shadow:
+      0 0 0 2px rgba(0, 220, 255, 0.6),
+      0 0 80px rgba(0, 180, 255, 0.7),
+      0 0 140px rgba(0, 140, 255, 0.5),
+      inset 0 0 50px rgba(0, 240, 255, 0.4);
+  }
+}
+
+@keyframes imagePulse {
+
+  0%,
+  100% {
+    opacity: 0.4;
+    border-color: rgba(0, 220, 255, 0.5);
+  }
+
+  50% {
+    opacity: 0.8;
+    border-color: rgba(0, 240, 255, 0.9);
+  }
+}
+
+@keyframes dataStream {
+  0% {
+    background-position: 0 -100%;
+  }
+
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes panelScan {
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  30% {
+    opacity: 0;
+    top: 100%;
+  }
+
+  100% {
+    opacity: 0;
+    top: 100%;
+  }
+}
+
+@keyframes footerFlow {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes particleFloat {
+
+  0%,
+  100% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0.3;
+  }
+
+  25% {
+    transform: translateY(-40px) translateX(15px) scale(1.2);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: translateY(-80px) translateX(-15px) scale(1);
+    opacity: 0.3;
+  }
+
+  75% {
+    transform: translateY(-40px) translateX(-8px) scale(1.1);
+    opacity: 0.6;
+  }
+}
+
+@keyframes jarvisScan {
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  25% {
+    opacity: 0;
+    top: 100%;
+  }
+
+  100% {
+    opacity: 0;
+    top: 100%;
+  }
+}
+
+@keyframes gridMove {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 60px;
+  }
+}
+
+@keyframes cornerGlow {
+
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.6;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes cornerGlow2 {
+
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(1) rotate(0deg);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(1.3) rotate(180deg);
+  }
+}
+
+/* 17. RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  .ironman-modal-container {
+    height: 90vh;
+    border-radius: 20px;
+  }
+
+  .ironman-title {
+    font-size: 1.7rem;
+  }
+
+  .ironman-content-inner {
+    padding: 1.8rem;
+  }
+
+  .ironman-image {
+    height: 220px;
+    max-width: 100%;
+  }
+
+  .ironman-btn {
+    padding: 0.9rem 2rem;
+    min-width: 150px;
+    font-size: 1rem;
+  }
+
+  .ironman-section-title {
+    font-size: 1.6rem;
+  }
+
+  .ironman-scroll-content::-webkit-scrollbar {
+    width: 8px;
+  }
+}
+
+/* 18. SMOOTH SCROLLING OPTIMIZATION */
+.ironman-scroll-content {
+  -webkit-overflow-scrolling: touch !important;
+  overflow-y: scroll !important;
+  scrollbar-width: thin;
+  /* Hardware acceleration for smooth scrolling */
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  perspective: 1000;
+  will-change: scroll-position;
+  /* Remove any transition/transform delays */
+  transition: none !important;
+  animation: none !important;
+}
+
+/* Ensure all content is hardware accelerated */
+.ironman-content-inner,
+.ironman-section,
+.ironman-tag,
+.ironman-btn,
+.ironman-description-panel,
+.ironman-image {
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+/* Remove any animation delays */
+.ironman-particle,
+.ironman-scanline,
+.ironman-border-glow,
+.ironman-footer-glow {
+  animation-delay: 0s !important;
+  will-change: transform, opacity;
+}
+
+/* Ensure smooth animations */
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+/* Certification & Badges CSS */
+
+.timeline-circle {
+  position: relative;
+  z-index: 10;
+}
+
+.timeline-circle::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(0, 255, 0, 0.1);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.timeline-circle:hover::before {
+  opacity: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .timeline {
+    overflow-x: auto;
+    padding-bottom: 20px;
+  }
+
+  .timeline>div {
+    min-width: 600px;
+  }
+}
+
+/* Animation for location symbol */
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    transform: translate(-50%, -100%) scale(1);
+  }
+
+  50% {
+    transform: translate(-50%, -100%) scale(1.1);
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== CONTACT SECTION STYLES ===== */
+
+/* Base Container */
+.contact-section {
+  position: relative;
+  padding: 4rem 1rem;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0a1a 0%, #001428 100%);
+  overflow: hidden;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+/* Animated Particles */
+.contact-particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.contact-particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #0af;
+  border-radius: 50%;
+  animation: float-particle 15s infinite linear;
+  filter: blur(1px);
+}
+
+@keyframes float-particle {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(200px, -200px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Header */
+.contact-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 10;
+}
+
+.contact-title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, #0af 0%, #0ff 50%, #0af 100%);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradient-shift 3s ease infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
+}
+
+.contact-title-underline {
+  width: 10rem;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #0af, transparent);
+  margin: 0.5rem auto;
+  border-radius: 2px;
+}
+
+.contact-subtitle {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  max-width: 36rem;
+  margin: 1.5rem auto;
+  line-height: 1.6;
+  padding: 0 1rem;
+}
+
+.contact-protocol-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(10, 175, 255, 0.7);
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+.protocol-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #0af;
+  animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
+}
+
+/* Main Container */
+.contact-container {
+  position: relative;
+  width: 100%;
+  max-width: 56rem;
+  margin: 0 auto;
+  z-index: 10;
+}
+
+/* Glass Panel */
+.contact-glass-panel {
+  position: relative;
+  border-radius: 1.5rem;
+  min-height: 28rem;
+  background: linear-gradient(135deg, 
+    rgba(10, 175, 255, 0.08) 0%, 
+    rgba(0, 20, 40, 0.95) 100%);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(10, 175, 255, 0.25);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 0 80px rgba(10, 175, 255, 0.15),
+    inset 0 0 40px rgba(10, 175, 255, 0.05);
+  overflow: hidden;
+}
+
+/* Holographic Grid */
+.holographic-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.2;
+  pointer-events: none;
+  background-image: 
+    linear-gradient(rgba(10, 175, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10, 175, 255, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Scanning Line */
+.scanning-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    #0af, 
+    transparent);
+  animation: scan 4s linear infinite;
+  z-index: 5;
+}
+
+@keyframes scan {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+/* Loading Overlay */
+.loading-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.loading-content {
+  position: relative;
+  text-align: center;
+}
+
+.loading-ring {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  background: linear-gradient(135deg, #0af, #0ff) border-box;
+  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-inner-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, 
+    rgba(6, 182, 212, 0.2), 
+    rgba(10, 175, 255, 0.1));
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+}
+
+.loading-text {
+  color: #0af;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-top: 1.5rem;
+  animation: pulse 2s infinite;
+}
+
+/* Flip Container */
+.flip-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 28rem;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.flip-container.flipped {
+  transform: rotateY(180deg);
+}
+
+.flip-container.flipping {
+  pointer-events: none;
+}
+
+.flip-front,
+.flip-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 1.5rem;
+  overflow: hidden;
+}
+
+.flip-back {
+  transform: rotateY(180deg);
+}
+
+/* Connect Content */
+.connect-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+/* Connect Button */
+.connect-button {
+  position: relative;
+  padding: 2rem 3rem;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, 
+    rgba(10, 175, 255, 0.15) 0%, 
+    rgba(0, 30, 60, 0.2) 100%);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(10, 175, 255, 0.3);
+  box-shadow: 
+    0 10px 30px rgba(10, 175, 255, 0.2),
+    inset 0 0 20px rgba(10, 175, 255, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  min-width: 22rem;
+}
+
+.connect-button:hover:not(:disabled) {
+  border-color: rgba(10, 175, 255, 0.5);
+  box-shadow: 
+    0 15px 40px rgba(10, 175, 255, 0.3),
+    inset 0 0 30px rgba(10, 175, 255, 0.15);
+}
+
+.connect-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Button Particles */
+.button-particles {
+  position: absolute;
+  inset: 0;
+  opacity: 0.3;
+}
+
+.button-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #0ff;
+  border-radius: 50%;
+  animation: float-button-particle 8s infinite linear;
+}
+
+@keyframes float-button-particle {
+  0%, 100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  10%, 90% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* Button Content */
+.button-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.button-icon {
+  font-size: 2.5rem;
+  color: #0ff;
+  filter: drop-shadow(0 0 10px rgba(10, 255, 255, 0.5));
+}
+
+.button-text {
+  text-align: left;
+}
+
+.button-main-text {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.button-sub-text {
+  color: #0ff;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* Features Grid */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 3rem;
+  max-width: 48rem;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+    max-width: 24rem;
+  }
+}
+
+.feature-card {
+  padding: 1.25rem;
+  border-radius: 0.75rem;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  border-color: rgba(10, 175, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.feature-icon {
+  font-size: 1.5rem;
+  color: #0af;
+  margin-bottom: 0.75rem;
+}
+
+.feature-title {
+  color: #0ff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.feature-desc {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+/* Form Content */
+.form-content {
+  height: 100%;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.form-title {
+  color: white;
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.form-title-underline {
+  width: 5rem;
+  height: 2px;
+  background: linear-gradient(90deg, #0af, #06b6d4);
+  margin: 0.5rem auto 1rem;
+  border-radius: 2px;
+}
+
+.form-subtitle {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.return-button {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.return-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(10, 175, 255, 0.4);
+}
+
+/* Contact Form */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-field {
+  position: relative;
+}
+
+.field-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.label-icon {
+  color: #0af;
+  font-size: 1rem;
+}
+
+.field-input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border-radius: 0.75rem;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.field-input:focus {
+  outline: none;
+  border-color: #06b6d4;
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.1);
+}
+
+.field-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.field-textarea {
+  min-height: 8rem;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.field-error {
+  border-color: #ef4444 !important;
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.vibrate {
+  animation: vibrate 0.5s ease-in-out;
+}
+
+@keyframes vibrate {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-3px); }
+  20%, 40%, 60%, 80% { transform: translateX(3px); }
+}
+
+.error-message {
+  color: #ef4444;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  padding-left: 0.25rem;
+}
+
+/* Phone Input Custom Styling */
+.phone-field-wrapper {
+  border-radius: 0.75rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.phone-input-custom {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.75rem;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.phone-input-custom:focus-within {
+  border-color: #06b6d4;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.PhoneInput {
+  display: flex;
+  align-items: center;
+}
+
+.PhoneInputCountry {
+  margin-right: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.PhoneInputCountrySelect {
+  background: transparent;
+  color: white;
+  border: none;
+  font-size: 1rem;
+  margin-left: 0.25rem;
+  padding: 0.25rem;
+}
+
+.PhoneInputCountrySelectArrow {
+  border-top-color: white;
+  opacity: 0.7;
+}
+
+.PhoneInputInput {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  padding: 0.5rem;
+  outline: none;
+  width: 100%;
+}
+
+.PhoneInputInput::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Submit Section */
+.submit-section {
+  margin-top: 1rem;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 1.125rem;
+  border-radius: 0.875rem;
+  background: linear-gradient(135deg, #0af 0%, #06b6d4 100%);
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.submit-button:hover:not(.submit-disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(10, 175, 255, 0.4);
+}
+
+.submit-button.submit-disabled {
+  background: linear-gradient(135deg, #666 0%, #888 100%);
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.submit-icon {
+  font-size: 1.1rem;
+}
+
+/* Status Display */
+.status-display {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, 
+    rgba(6, 95, 70, 0.2), 
+    rgba(16, 185, 129, 0.1));
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .status-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.status-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
+}
+
+.status-success {
+  background: rgba(16, 185, 129, 0.2);
+  border-color: rgba(16, 185, 129, 0.5);
+}
+
+.status-pending {
+  background: rgba(10, 175, 255, 0.2);
+  border-color: rgba(10, 175, 255, 0.5);
+}
+
+.status-failed {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.5);
+}
+
+.status-icon-check {
+  color: #10b981;
+  font-size: 1.5rem;
+}
+
+.status-icon-times {
+  color: #ef4444;
+  font-size: 1.5rem;
+}
+
+.status-pending-animation {
+  animation: pulse 2s infinite;
+}
+
+.status-icon-phone {
+  color: #0af;
+  font-size: 1.25rem;
+}
+
+.status-icon-default {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.25rem;
+}
+
+.status-info {
+  flex: 1;
+}
+
+.status-name {
+  color: white;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.25rem;
+}
+
+.status-value {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.status-success-text {
+  color: #10b981;
+}
+
+.status-pending-text {
+  color: #0af;
+  animation: pulse 2s infinite;
+}
+
+.status-failed-text {
+  color: #ef4444;
+}
+
+/* Instructions */
+.contact-instructions {
+  text-align: center;
+  margin-top: 3rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  position: relative;
+  z-index: 10;
+  padding: 0 1rem;
+}
+
+.instructions-main {
+  margin-bottom: 0.5rem;
+}
+
+.instructions-bold {
+  font-weight: 600;
+  color: white;
+}
+
+.instructions-sub {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+  max-width: 36rem;
+  margin: 0 auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 3rem 1rem;
+  }
+  
+  .contact-glass-panel {
+    min-height: 24rem;
+  }
+  
+  .flip-container {
+    min-height: 24rem;
+  }
+  
+  .connect-button {
+    min-width: 18rem;
+    padding: 1.5rem 2rem;
+  }
+  
+  .button-main-text {
+    font-size: 1.25rem;
+  }
+  
+  .form-content {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-title {
+    font-size: 2rem;
+  }
+  
+  .contact-subtitle {
+    font-size: 0.95rem;
+  }
+  
+  .connect-button {
+    min-width: 100%;
+    padding: 1.25rem 1.5rem;
+  }
+  
+  .button-content {
+    gap: 1rem;
+  }
+  
+  .button-icon {
+    font-size: 2rem;
+  }
+  
+  .button-main-text {
+    font-size: 1.1rem;
+  }
+  
+  .form-content {
+    padding: 1.25rem;
+  }
+  
+  .field-input {
+    padding: 0.75rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .contact-particle,
+  .button-particle,
+  .scanning-line,
+  .loading-ring,
+  .status-pending-animation,
+  .shake,
+  .vibrate {
+    animation: none !important;
+  }
+  
+  .flip-container {
+    transition: none !important;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== SCROLLBAR STYLING ===== */
+.form-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.form-content::-webkit-scrollbar-track {
+  background: rgba(10, 175, 255, 0.1);
+  border-radius: 4px;
+}
+
+.form-content::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #0af 0%, #06b6d4 100%);
+  border-radius: 4px;
+}
+
+.form-content::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #06b6d4 0%, #0af 100%);
+}
+
+/* ===== PHONE INPUT DROPDOWN STYLING ===== */
+.PhoneInputCountrySelect {
+  background: white !important;
+  color: black !important;
+  border: 1px solid #ccc !important;
+}
+
+.PhoneInputCountrySelect option {
+  background: white;
+  color: black;
+  padding: 8px;
+}
+
+.PhoneInputCountrySelectArrow {
+  border-top-color: black !important;
+}
+
+/* ===== STATUS LOADING ANIMATION ===== */
+.status-loading-animation {
+  animation: pulse-blue 1.5s infinite;
+}
+
+@keyframes pulse-blue {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+.status-icon-loading {
+  color: #0af;
+  font-size: 1.25rem;
+}
+
+/* ===== BLUE STATUS THEME ===== */
+.status-loading {
+  background: rgba(10, 175, 255, 0.2);
+  border-color: rgba(10, 175, 255, 0.5);
+}
+
+.status-success {
+  background: rgba(10, 175, 255, 0.2);
+  border-color: rgba(10, 175, 255, 0.7);
+}
+
+.status-failed {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.5);
+}
+
+.status-loading-text {
+  color: #0af;
+  animation: pulse-blue 1.5s infinite;
+}
+
+.status-success-text {
+  color: #0af;
+}
+
+.status-failed-text {
+  color: #ef4444;
+}
+
+/* ===== SUBMIT BUTTON ROCKET ICON ===== */
+.submit-icon {
+  font-size: 1.1rem;
+  animation: rocket-pulse 2s infinite;
+}
+
+@keyframes rocket-pulse {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+/* ===== VIBRATE ANIMATION FOR ERRORS ===== */
+@keyframes vibrate {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-3px); }
+  20%, 40%, 60%, 80% { transform: translateX(3px); }
+}
+
+.vibrate {
+  animation: vibrate 0.5s ease-in-out;
+}
+
+/* ===== FORM CONTENT SCROLL AREA ===== */
+.form-content {
+  max-height: 500px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== FIXED SCROLLBAR STYLING ===== */
+.form-content::-webkit-scrollbar {
+  width: 10px;
+}
+
+.form-content::-webkit-scrollbar-track {
+  background: rgba(10, 175, 255, 0.08);
+  border-radius: 6px;
+}
+
+.form-content::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #0af 0%, #06b6d4 50%, #0af 100%);
+  border-radius: 6px;
+  border: 2px solid rgba(10, 175, 255, 0.2);
+}
+
+.form-content::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #06b6d4 0%, #0af 50%, #06b6d4 100%);
+}
+
+/* For Firefox */
+.form-content {
+  scrollbar-width: thin;
+  scrollbar-color: #0af rgba(10, 175, 255, 0.1);
+}
+
+/* ===== PHONE INPUT DROPDOWN STYLING ===== */
+.PhoneInputCountrySelect {
+  background: white !important;
+  color: black !important;
+  border: 1px solid #ddd !important;
+  border-radius: 4px !important;
+  padding: 6px 8px !important;
+}
+
+.PhoneInputCountrySelect:focus {
+  outline: 2px solid #0af !important;
+  outline-offset: 1px !important;
+}
+
+.PhoneInputCountrySelect option {
+  background: white;
+  color: black;
+  padding: 8px 12px;
+}
+
+.PhoneInputCountrySelectArrow {
+  border-top-color: black !important;
+  margin-left: 4px !important;
+}
+
+/* ===== SMOOTH ANIMATIONS ===== */
+.flip-container {
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+.connect-button, .submit-button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* ===== STATUS DISPLAY SCROLL SMOOTH ===== */
+.status-display {
+  scroll-margin-top: 20px;
+}
+
+/* ===== BUTTON HOVER EFFECTS ===== */
+.connect-button:hover:not(:disabled) {
+  transform: scale(1.03) !important;
+  transition: transform 0.2s ease !important;
+}
+
+.connect-button:active:not(:disabled) {
+  transform: scale(0.97) !important;
+  transition: transform 0.1s ease !important;
+}
+
+.submit-button:hover:not(.submit-disabled) {
+  transform: translateY(-2px) !important;
+  transition: transform 0.2s ease !important;
+}
+
+.submit-button:active:not(.submit-disabled) {
+  transform: translateY(0) !important;
+  transition: transform 0.1s ease !important;
+}
+
+/* ===== REDUCED MOTION SUPPORT ===== */
+@media (prefers-reduced-motion: reduce) {
+  .flip-container,
+  .connect-button,
+  .submit-button,
+  .button-particle,
+  .contact-particle,
+  .scanning-line,
+  .loading-ring,
+  .status-loading-animation {
+    transition: none !important;
+    animation: none !important;
+  }
+  
+  .flip-container.flipped {
+    transform: rotateY(180deg);
+  }
+}
+
+/* ===== MOBILE OPTIMIZATIONS ===== */
+@media (max-width: 768px) {
+  .form-content {
+    max-height: 70vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .form-content::-webkit-scrollbar {
+    width: 6px;
+  }
+}
+
+/* ===== TOUCH DEVICE OPTIMIZATIONS ===== */
+@media (hover: none) and (pointer: coarse) {
+  .connect-button:active {
+    transform: scale(0.97) !important;
+  }
+  
+  .submit-button:active {
+    transform: translateY(0) !important;
+  }
+}
+
+
+
+
+
+
+
+
+/* ===== FIXED LOADING ANIMATION ===== */
+.loading-ring-container {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 2rem;
+}
+
+.loading-ring-outer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid transparent;
+  border-top: 4px solid #0af;
+  border-right: 4px solid #0af;
+  animation: spin-clockwise 1.5s linear infinite;
+}
+
+.loading-ring-inner {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 4px solid transparent;
+  border-top: 4px solid #0ff;
+  border-right: 4px solid #0ff;
+  animation: spin-counterclockwise 1.2s linear infinite;
+}
+
+.loading-ring-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(10, 175, 255, 0.2) 0%, rgba(0, 20, 40, 0.1) 70%);
+  border: 2px solid rgba(10, 175, 255, 0.3);
+}
+
+@keyframes spin-clockwise {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes spin-counterclockwise {
+  0% { transform: rotate(360deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* ===== IMPROVED SPEECH SYNTHESIS ===== */
+/* This prevents voice cutting */
+@media (prefers-reduced-motion: no-preference) {
+  .loading-ring-outer,
+  .loading-ring-inner {
+    animation-play-state: running;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loading-ring-outer,
+  .loading-ring-inner {
+    animation: none;
+  }
+}
+
+/* ===== FIX FOR NAVBAR LOGO VOICE CUTTING ===== */
+/* Add this to your Navbar component CSS */
+.logo-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.logo-button:active::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.1);
+  animation: logo-click 0.5s ease;
+}
+
+@keyframes logo-click {
+  0% { opacity: 0.5; }
+  100% { opacity: 0; }
+}
+
+/* ===== PREVENT PAGE RELOAD FROM INTERRUPTING SPEECH ===== */
+/* This helps with the navbar logo issue */
+/* In your Navbar.jsx, prevent default and handle speech before reload */
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================== */
+/* SCROLLBAR STYLES - LIME COLOR WITH BLACK BACKGROUND */
+/* =========================================== */
+
+/* Main website scrollbar */
+::-webkit-scrollbar {
+  width: 12px !important;
+}
+
+::-webkit-scrollbar-track {
+  background: black !important;
+  border-radius: 6px !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00FF00 !important;
+  border-radius: 6px !important;
+  border: 2px solid #00FF00 !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00FF00 !important;
+  box-shadow: 0 0 15px #00FF00 !important;
+}
+
+/* Mobile menu scrollbar */
+.lg\\:hidden.fixed::-webkit-scrollbar {
+  width: 10px !important;
+}
+
+.lg\\:hidden.fixed::-webkit-scrollbar-track {
+  background: black !important;
+  border-radius: 5px !important;
+}
+
+.lg\\:hidden.fixed::-webkit-scrollbar-thumb {
+  background: #00FF00 !important;
+  border-radius: 5px !important;
+  border: 2px solid #00FF00 !important;
+}
+
+.lg\\:hidden.fixed::-webkit-scrollbar-thumb:hover {
+  background: #00FF00 !important;
+  box-shadow: 0 0 15px #00FF00 !important;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin !important;
+  scrollbar-color: #00FF00 black !important;
+}
+
+/* For specific mobile menu in Firefox */
+.lg\\:hidden.fixed {
+  scrollbar-width: thin !important;
+  scrollbar-color: #00FF00 black !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================== */
+/* SCROLLBAR STYLES - CONDITIONAL BY DEVICE TYPE */
+/* =========================================== */
+
+/* 
+  For MOBILE & TABLET (width < 1024px): 
+  Hide main scrollbar but keep scrolling functionality
+*/
+@media (max-width: 1023px) {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  ::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  * {
+    -ms-overflow-style: none !important;  /* IE and Edge */
+    scrollbar-width: none !important;     /* Firefox */
+  }
+  
+  /* Ensure scrolling still works */
+  html, body {
+    -webkit-overflow-scrolling: touch !important;
+    overflow: auto !important;
+    scroll-behavior: smooth !important;
+  }
+  
+  /* Keep mobile menu scrollbar visible */
+  .lg\\:hidden.fixed::-webkit-scrollbar {
+    display: block !important;
+    width: 6px !important;
+  }
+  
+  .lg\\:hidden.fixed::-webkit-scrollbar-track {
+    background: black !important;
+    border-radius: 3px !important;
+  }
+  
+  .lg\\:hidden.fixed::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 0, 0.6) !important;
+    border-radius: 3px !important;
+  }
+  
+  .lg\\:hidden.fixed {
+    -ms-overflow-style: auto !important;
+    scrollbar-width: thin !important;
+  }
+}
+
+/* 
+  For DESKTOP & LAPTOP (width ≥ 1024px): 
+  Show Blue-ish scrollbar with black background
+*/
+@media (min-width: 1024px) {
+  /* Main website scrollbar */
+  ::-webkit-scrollbar {
+    width: 12px !important;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: black !important;
+    border-radius: 6px !important;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #00ccff !important; /* Blue-ish color */
+    border-radius: 6px !important;
+    border: 2px solid #00ccff !important;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00ffff !important;
+    box-shadow: 0 0 15px #00ccff !important;
+  }
+  
+  /* For Firefox on desktop */
+  * {
+    scrollbar-width: thin !important;
+    scrollbar-color: lch(52.33% 101.98 39.58) black !important;
+  }
+  
+  /* Mobile menu scrollbar for desktop (if menu somehow appears) */
+  .lg\\:hidden.fixed::-webkit-scrollbar {
+    width: 8px !important;
+  }
+  
+  .lg\\:hidden.fixed::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.8) !important;
+  }
+  
+  .lg\\:hidden.fixed::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 0, 0.7) !important;
+  }
+}
+
+/* =========================================== */
+/* ENSURE SMOOTH SCROLLING ON ALL DEVICES */
+/* =========================================== */
+html {
+  scroll-behavior: smooth !important;
+}
+
+body {
+  overflow-x: hidden !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* Special handling for Projects and Contact sections */
+#projects, #contact {
+  scroll-margin-top: 80px !important; /* Adjust based on your navbar height */
+}
+
+/* Ensure touch scrolling works on mobile */
+@media (hover: none) and (pointer: coarse) {
+  * {
+    -webkit-tap-highlight-color: transparent !important;
+  }
+  
+  body {
+    overflow-y: scroll !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+

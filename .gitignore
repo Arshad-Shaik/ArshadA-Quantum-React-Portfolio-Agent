@@ -1,0 +1,120 @@
+# # Logs
+# logs
+# *.log
+# npm-debug.log*
+# yarn-debug.log*
+# yarn-error.log*
+# pnpm-debug.log*
+# lerna-debug.log*
+
+# node_modules
+# dist
+# dist-ssr
+# *.local
+
+# # Editor directories and files
+# .vscode/*
+# !.vscode/extensions.json
+# .idea
+# .DS_Store
+# *.suo
+# *.ntvs*
+# *.njsproj
+# *.sln
+# *.sw?
+
+
+
+# # environment variables
+# .env
+# .env.local
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Build outputs
+dist/
+dist-ssr/
+*.local
+.next/
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ============ CRITICAL ADDITIONS FOR YOUR PROJECT ============
+
+# Audio files that should be committed
+# DO NOT ignore your actual sound files in /public/sounds/
+# BUT ignore any temporary audio files
+temp_audio/
+*.mp3.tmp
+*.wav.tmp
+
+# Session storage for Portfolio Agent
+session_storage_backup/
+
+# Cache directories
+.cache/
+.next/cache/
+
+# Operating system files
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+
+# Optional: ignore if you don't want these in repo
+coverage/
+*.tgz
