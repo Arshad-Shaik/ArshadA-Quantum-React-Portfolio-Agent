@@ -172,35 +172,35 @@ eslint @eslint/js @eslint/eslintrc
 
 # 🎯 Section-by-Section Innovation
 
-1. About Section
+1. **About Section**
 - Quantum particle background
 
 - Voice-enabled self-introduction
 
 - Dynamic text animations
 
-2. Skills Section
+2. **Skills Section**
 - 3D rotating cube (Desktop)
 
 - Interactive particle grid (Mobile)
 
 - Skill level quantum visualizations
 
-3. Projects Section
+3. **Projects Section**
 - **Desktop**: Hover-triggered quantum expansions
 
 - **Mobile**: Iron Man inspired modal system
 
 - Unique CSS animations per project
 
-4. Certifications Section
+4. **Certifications Section**
 - **Desktop**: Grid layout with holographic effects
 
 - **Mobile/Tablet**: Swipeable carousel
 
 - Quantum badge animations
 
-5. Contact Section
+5. **Contact Section**
 - Secure form validation
 
 - Real-time feedback
@@ -244,7 +244,7 @@ eslint @eslint/js @eslint/eslintrc
 
 - Medium-complexity animations
 
-**🖥️Desktop**:
+**🖥️Desktop/Laptop**:
 - Full quantum experience
 
 - Mouse-triggered effects
@@ -306,7 +306,7 @@ eslint @eslint/js @eslint/eslintrc
 
 # 🛠️ Development Philosophy
 <p align="justify">
-    "As a Quantum React Developer, I don't just write code; I engineer experiences. Every animation tells a story, every interaction has purpose, and every quantum effect serves the user's journey through my digital universe."
+    As a Quantum React Developer, I don't just write code; I engineer experiences. Every animation tells a story, every interaction has purpose, and every quantum effect serves the user's journey through my digital universe.
 </p>
 
 # 📦 Installation & Setup
@@ -323,11 +323,11 @@ npm run dev
 npm run build
 
 # 🌍 Live Deployment
-Vercel Hosted: [Your Portfolio URL]
-GitHub Repository: https://github.com/Arshad-Shaik/ArshadA-Quantum-React-Portfolio-Agent.git
+- **Vercel Hosted**: [Your Portfolio URL]
+- **GitHub Repository**: https://github.com/Arshad-Shaik/ArshadA-Quantum-React-Portfolio-Agent.git
 
 # 📞 Contact
-Quantum React Developer: Arshad Wasib Shaik
-Innovation Contact: Through portfolio contact form
+- **Quantum React Developer**: Arshad Wasib Shaik
+- **Innovation Contact**: Through portfolio contact form
 
 **"Engineering digital experiences that transcend traditional boundaries through quantum physics principles and AI intelligence."** - **Arshad Wasib Shaik**
