@@ -324,7 +324,7 @@ npm run dev
 npm run build
 
 # 🌍 Live Deployment
-- **Vercel Hosted**: [Your Portfolio URL]
+- **Vercel Hosted**: [Link will be updated soon]
 - **GitHub Repository**: https://github.com/Arshad-Shaik/ArshadA-Quantum-React-Portfolio-Agent.git
 
 # 📞 Contact
