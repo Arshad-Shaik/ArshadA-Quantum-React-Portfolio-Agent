@@ -912,7 +912,7 @@ const Navbar = () => {
           {/* Logo */}
           <div className="cursor-pointer mt-[-15px]" onClick={handleLogoClick}>
             <img 
-              src="./src/assets/hero/Shaik.png" 
+              src="src/assets/hero/Shaik.png" 
               alt="Arshad" 
               className="w-26 h-26 rounded-full object-cover transition-all duration-500"
               style={{ 
