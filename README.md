@@ -327,7 +327,7 @@ npm run dev
 npm run build
 
 # 🌍 Live Deployment
-- **Vercel Hosted**: | https://arshad-wasib-shaik-quantum-react-portfolio.vercel.app/  |
+- **Vercel Hosted**: https://arshad-wasib-shaik-quantum-react-portfolio.vercel.app/
 - **GitHub Repository**: https://github.com/Arshad-Shaik/ArshadA-Quantum-React-Portfolio-Agent.git
 
 # 📞 Contact
