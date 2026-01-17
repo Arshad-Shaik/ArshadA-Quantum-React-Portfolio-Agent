@@ -1,6 +1,5 @@
 
 # Quantum React Arshad's Portfolio Agent - AI-Powered Developer Showcase with Web Speech Synthesis & Battery APIs
-# Quantum React Portfolio - Arshad's Portfolio Agent
 
 ## Quantum React Portfolio - Arshad's Portfolio Agent
 
