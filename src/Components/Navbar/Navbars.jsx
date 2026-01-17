@@ -3,6 +3,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { FiMenu, FiX, FiUser, FiCode, FiBriefcase, FiFolder, FiBook, FiMail, FiAward } from 'react-icons/fi';
 import SocialCube from './SocialCube';
 import SecurityAgent from './SecurityAgent';
+import shaikLogo from '../../assets/hero/Shaik.png';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -912,7 +913,7 @@ const Navbar = () => {
           {/* Logo */}
           <div className="cursor-pointer mt-[-15px]" onClick={handleLogoClick}>
             <img 
-              src="/Shaik.png" 
+              src={shaikLogo}
               alt="Arshad" 
               className="w-26 h-26 rounded-full object-cover transition-all duration-500"
               style={{ 
