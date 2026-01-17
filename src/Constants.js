@@ -383,7 +383,7 @@ export const ProjectsInfo = [
     image: Arshad,
     tags: ["HTML", "Tailwind CSS", "React.js", "Vite.js", "JavaScript XML", "Browser/Web Speech Synthesis API", "Web/browser Battery API", "Voice Agents", "Bland.ai", "AI Calling Agent", "Serverless Backend - Google Apps Script"],
     github: "https://github.com/Arshad-Shaik/ArshadA-Quantum-React-Portfolio-Agent",
-    live: "",
+    live: "https://arshad-wasib-shaik-quantum-react-portfolio.vercel.app/",
   },
 
   {
