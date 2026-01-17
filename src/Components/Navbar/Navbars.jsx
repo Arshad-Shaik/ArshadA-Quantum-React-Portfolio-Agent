@@ -1,4 +1,3 @@
-
 // Navbars.jsx
 import React, { useEffect, useState, useRef } from 'react';
 import { FiMenu, FiX, FiUser, FiCode, FiBriefcase, FiFolder, FiBook, FiMail, FiAward } from 'react-icons/fi';
@@ -913,7 +912,7 @@ const Navbar = () => {
           {/* Logo */}
           <div className="cursor-pointer mt-[-15px]" onClick={handleLogoClick}>
             <img 
-              src="src/assets/hero/Shaik.png" 
+              src="./src/assets/hero/Shaik.png" 
               alt="Arshad" 
               className="w-26 h-26 rounded-full object-cover transition-all duration-500"
               style={{ 
