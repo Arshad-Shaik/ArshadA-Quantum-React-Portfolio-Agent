@@ -3,7 +3,7 @@
 # Quantum React Portfolio - Arshad's Portfolio Agent
 
 ## Quantum React Portfolio - Arshad's Portfolio Agent
-(Updated SEO - Search Engine Optimization)
+
 ## 🚀 Revolutionary Quantum React Developer Portfolio
 
 ### Created by: Arshad Wasib Shaik
