@@ -335,3 +335,172 @@ npm run build
 - **Innovation Contact**: Through portfolio contact form
 
 **"Engineering digital experiences that transcend traditional boundaries through quantum physics principles and AI intelligence."** - **Arshad Wasib Shaik**
+
+# Screenshots
+
+### Desktop/Laptop View
+
+![About Section 1](image.png)
+
+![About Section 2](image-1.png)
+
+![About Section 3](image-2.png)
+
+![Skills Section 1](image-3.png)
+
+![Skills Section 2](image-4.png)
+
+![Skills Section 3](image-5.png)
+
+![Skills Section 4](image-6.png)
+
+![Experience Section 1](image-7.png)
+
+![Experience Section 2](image-8.png)
+
+![Experience Section 3](image-9.png)
+
+![Experience Section 4](image-10.png)
+
+![Education Section 1](image-11.png)
+
+![Education Section 2](image-12.png)
+
+![Education Section 3](image-13.png)
+
+![Project Section 1](image-14.png)
+
+![Project Section 2](image-15.png)
+
+![Project Section 3](image-16.png)
+
+![Project Section 4](image-17.png)
+
+![Project Section 5](image-18.png)
+
+![alt text](image-47.png)
+
+![alt text](image-48.png)
+
+![alt text](image-49.png)
+
+![alt text](image-50.png)
+
+![alt text](image-51.png)
+
+![alt text](image-52.png)
+
+![alt text](image-53.png)
+
+![alt text](image-54.png)
+
+![alt text](image-55.png)
+
+![alt text](image-56.png)
+
+![alt text](image-57.png)
+
+![Certification Tab 1](image-19.png)
+
+![Certification Tab 2](image-20.png)
+
+![Certification Tab 3](image-23.png)
+
+![Certification Tab 4](image-24.png)
+
+![alt text](image-25.png)
+
+![alt text](image-26.png)
+
+![alt text](image-27.png)
+
+![alt text](image-28.png)
+
+![alt text](image-29.png)
+
+![alt text](image-30.png)
+
+![alt text](image-31.png)
+
+![alt text](image-32.png)
+
+![alt text](image-33.png)
+
+![alt text](image-34.png)
+
+![alt text](image-35.png)
+
+![alt text](image-36.png)
+
+![alt text](image-37.png)
+
+![alt text](image-38.png)
+
+![Badges tab 1](image-21.png)
+
+![Badges tab 2](image-22.png)
+
+![alt text](image-39.png)
+
+![alt text](image-40.png)
+
+![alt text](image-41.png)
+
+![alt text](image-42.png)
+
+![alt text](image-43.png)
+
+![alt text](image-44.png)
+
+![alt text](image-45.png)
+
+![alt text](image-46.png)
+
+![Contact Section 1](image-58.png)
+
+![Contact Section 2](image-59.png)
+
+![Contact Section 3](image-60.png)
+
+![Footer 1](image-61.png)
+
+![Footer 2](image-62.png)
+
+
+### Mobile/Tablet View
+
+![alt text](image-63.png)
+
+![alt text](image-64.png)
+
+![alt text](image-65.png)
+
+![alt text](image-66.png)
+
+![alt text](image-68.png)
+
+![alt text](image-69.png)
+
+![alt text](image-70.png)
+
+![alt text](image-71.png)
+
+![alt text](image-72.png)
+
+![alt text](image-73.png)
+
+![alt text](image-74.png)
+
+![alt text](image-75.png)
+
+![alt text](image-76.png)
+
+![alt text](image-77.png)
+
+![alt text](image-78.png)
+
+![alt text](image-79.png)
+
+![alt text](image-80.png)
+
+![alt text](image-81.png)
